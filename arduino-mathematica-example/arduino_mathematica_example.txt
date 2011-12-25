@@ -1,0 +1,39 @@
+/*
+ arduino_mathematica_example
+ 
+ This code is adapted from
+ http://arduino.cc/en/Tutorial/SerialCallResponse
+ 
+ When started, the Arduino sends an ASCII A on the serial port until 
+ it receives a signal from the computer. It then reads Analog 1, 
+ sends a single byte on the serial port and waits for another signal
+ from the computer.
+ 
+ Test it with a potentiometer on A1.
+ 
+ */
+
+int sensor = 0;
+int inByte = 0;
+
+void setup() {
+  Serial.begin(9600);
+  establishContact();
+}
+
+void loop() {
+  if (Serial.available() > 0) {
+    inByte = Serial.read();
+    // divide sensor value by 4 to return a single byte 0-255
+    sensor = analogRead(A1)/4;
+    delay(15);
+    Serial.write(sensor);
+  }
+}
+
+void establishContact() {
+  while (Serial.available() <= 0) {
+    Serial.print('A');
+    delay(100);
+  }
+}

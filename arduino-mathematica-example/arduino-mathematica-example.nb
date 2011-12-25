@@ -1,0 +1,300 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      9299,        291]
+NotebookOptionsPosition[      7754,        234]
+NotebookOutlinePosition[      8110,        250]
+CellTagsIndexPosition[      8067,        247]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[TextData[{
+ "Arduino ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " Example"
+}], "Title",
+ CellChangeTimes->{{3.533802323351212*^9, 3.533802336036968*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Setup", "Subsection",
+ CellChangeTimes->{{3.533802340557988*^9, 3.533802341357321*^9}}],
+
+Cell["Install the SerialIO package", "Text",
+ CellChangeTimes->{{3.533802344853786*^9, 3.533802360798071*^9}}],
+
+Cell[TextData[ButtonBox["http://library.wolfram.com/infocenter/Demos/5726/",
+ BaseStyle->"Hyperlink",
+ ButtonData->{
+   URL["http://library.wolfram.com/infocenter/Demos/5726/"], None},
+ ButtonNote->"http://library.wolfram.com/infocenter/Demos/5726/"]], "Text",
+ CellChangeTimes->{{3.5337288624395514`*^9, 3.5337288805344954`*^9}}],
+
+Cell[TextData[{
+ "in the folder ",
+ StyleBox["/Users/username/Library/Mathematica/Applications",
+  FontWeight->"Bold"],
+ " and make sure that is on your path.  If the following does not evaluate to \
+true"
+}], "Text",
+ CellChangeTimes->{{3.533728885857113*^9, 3.533728930297147*^9}, {
+  3.5338023872170067`*^9, 3.533802412111549*^9}, {3.533802556324332*^9, 
+  3.533802603701972*^9}}],
+
+Cell["\<\
+MemberQ[$Path, \"/Users/username/Library/Mathematica/Applications\"]\
+\>", "Program",
+ CellChangeTimes->{{3.5337285634519367`*^9, 3.533728563453147*^9}, {
+   3.5337289070677557`*^9, 3.53372890730698*^9}, {3.5338024008671637`*^9, 
+   3.5338024014815187`*^9}, 3.533802905315782*^9, {3.5338029751969833`*^9, 
+   3.533802987708102*^9}}],
+
+Cell["Then run this command", "Text",
+ CellChangeTimes->{{3.5337291102454233`*^9, 3.533729151574253*^9}, {
+  3.533802417440083*^9, 3.5338024318835163`*^9}}],
+
+Cell["\<\
+AppendTo[$Path, \"/Users/username/Library/Mathematica/Applications\"]\
+\>", "Program",
+ CellChangeTimes->{{3.5337291102454233`*^9, 3.533729151574253*^9}, {
+   3.533802417440083*^9, 3.533802467194358*^9}, 3.533802917650968*^9}],
+
+Cell[TextData[{
+ "Next, edit the file ",
+ StyleBox["/Users/username/Library/Mathematica/Applications/SerialIO/Kernal/\
+init.m",
+  FontWeight->"Bold"],
+ " so the line"
+}], "Text",
+ CellChangeTimes->{{3.533802473049708*^9, 3.533802530691044*^9}}],
+
+Cell["$Link = Install[\"SerialIO\"]", "Program",
+ CellChangeTimes->{{3.533802627326419*^9, 3.533802633611517*^9}, 
+   3.5338029251720753`*^9}],
+
+Cell["reads", "Text",
+ CellChangeTimes->{{3.5338026373070307`*^9, 3.533802639726123*^9}}],
+
+Cell["\<\
+$Link = 
+ Install[\"/Users/username/Library/Mathematica/Applications/SerialIO/MacOSX/\
+SerialIO\", 
+  LinkProtocol -> \"Pipes\"]\
+\>", "Program",
+ CellChangeTimes->{{3.533802650927223*^9, 3.533802689778152*^9}, 
+   3.533802933115745*^9}],
+
+Cell[TextData[{
+ "Make sure that the Arduino is running the ",
+ StyleBox["arduino_mathematica_example",
+  FontWeight->"Bold"],
+ " sketch and that the Arduino software is not running on the computer."
+}], "Text",
+ CellChangeTimes->{{3.533802724874497*^9, 3.533802774737712*^9}}],
+
+Cell["\<\
+If you need to find the port name for your Arduino, you can open a terminal \
+and type\
+\>", "Text",
+ CellChangeTimes->{{3.53380299935249*^9, 3.533803099241909*^9}}],
+
+Cell["ls /dev/tty.*", "Program",
+ CellChangeTimes->{{3.53380303012006*^9, 3.5338030332168083`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Run the demo program", "Subsection",
+ CellChangeTimes->{{3.533802790122932*^9, 3.533802793505701*^9}}],
+
+Cell[BoxData[
+ RowBox[{"<<", "SerialIO`"}]], "Input",
+ CellChangeTimes->{{3.533802818881028*^9, 3.533802822348425*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"myArduino", "=", 
+  RowBox[{
+  "SerialOpen", "[", "\"\</dev/tty.usbmodem3a21\>\"", "]"}]}]], "Input",
+ CellChangeTimes->{{3.5335600259139643`*^9, 3.533560051388588*^9}, 
+   3.5337300949920273`*^9}],
+
+Cell[BoxData[
+ InterpretationBox["\<\"SerialPort[</dev/tty.usbmodem3a21>]\"\>",
+  StringForm["SerialPort[<`1`>]", "/dev/tty.usbmodem3a21"],
+  Editable->False]], "Output",
+ CellChangeTimes->{3.533803295952017*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SerialSetOptions", "[", 
+  RowBox[{"myArduino", ",", 
+   RowBox[{"\"\<BaudRate\>\"", "\[Rule]", "9600"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.533560642595771*^9, 3.533560687321941*^9}, 
+   3.533560778784617*^9, {3.533730056888424*^9, 3.533730094995583*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"\<\"BaudRate\"\>", "\[Rule]", "9600"}], ",", 
+   RowBox[{"\<\"DataBits\"\>", "\[Rule]", "8"}], ",", 
+   RowBox[{"\<\"StopBits\"\>", "\[Rule]", "1"}], ",", 
+   RowBox[{"\<\"Parity\"\>", "\[Rule]", "0"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.533803295985132*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SerialReadyQ", "[", "myArduino", "]"}]], "Input",
+ CellChangeTimes->{{3.533560097474472*^9, 3.533560107928924*^9}, 
+   3.5337300949938507`*^9, {3.533732772101479*^9, 3.5337327721781693`*^9}, {
+   3.533734443172874*^9, 3.5337344434204397`*^9}}],
+
+Cell[BoxData["True"], "Output",
+ CellChangeTimes->{3.53380329601838*^9}]
+}, Open  ]],
+
+Cell["\<\
+It doesn't matter what character we send the Arduino. Here we use an ASCII B. \
+We take the first byte returned by the Arduino, use ToCharacterCode[] to \
+convert it into an integer, and repeat 10 times per second.  The slider \
+should wiggle back and forth as you turn the potentiometer connected to the \
+Arduino.\
+\>", "Text",
+ CellChangeTimes->{{3.533803152467449*^9, 3.533803190548169*^9}, {
+  3.5338032236450043`*^9, 3.5338032772542543`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Slider", "[", "   ", 
+  RowBox[{
+   RowBox[{"Dynamic", "[", 
+    RowBox[{"Refresh", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"SerialWrite", "[", 
+        RowBox[{"myArduino", ",", " ", "\"\<B\>\""}], "]"}], ";", 
+       RowBox[{"First", "[", 
+        RowBox[{
+         RowBox[{"SerialRead", "[", "myArduino", "]"}], " ", "//", " ", 
+         "ToCharacterCode"}], "]"}]}], ",", 
+      RowBox[{"UpdateInterval", "\[Rule]", "0.1"}]}], "]"}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "255"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.533734605057171*^9, 3.533734648378785*^9}, {
+   3.533735120384595*^9, 3.533735124270073*^9}, 3.533735829817933*^9, {
+   3.533735966525117*^9, 3.533735974897017*^9}, {3.533736426333003*^9, 
+   3.533736468633232*^9}, {3.53373650765812*^9, 3.533736547304389*^9}, {
+   3.5337365896832857`*^9, 3.5337366065061827`*^9}, {3.533736652890985*^9, 
+   3.533736654329612*^9}, {3.5337367138396997`*^9, 3.5337367217548037`*^9}, {
+   3.533736768583971*^9, 3.5337367776924067`*^9}, {3.533803146680799*^9, 
+   3.5338031490786867`*^9}}],
+
+Cell[BoxData[
+ SliderBox[Dynamic[
+   Refresh[SerialIO`SerialWrite[$CellContext`myArduino, "B"]; First[
+      ToCharacterCode[
+       SerialIO`SerialRead[$CellContext`myArduino]]], UpdateInterval -> 
+    0.1]], {0, 255}]], "Output",
+ CellChangeTimes->{3.533803296052721*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Close the serial link to the Arduino when you are finished\
+\>", "Subsection",
+ CellChangeTimes->{{3.533802795865917*^9, 3.533802804114325*^9}}],
+
+Cell[BoxData[
+ RowBox[{"SerialClose", "[", "myArduino", "]"}]], "Input",
+ CellChangeTimes->{{3.533560277343755*^9, 3.533560284692026*^9}, 
+   3.533730094998847*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{740, 867},
+WindowMargins->{{Automatic, 78}, {Automatic, 102}},
+FrontEndVersion->"8.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (October 5, \
+2011)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 168, 6, 76, "Title"],
+Cell[CellGroupData[{
+Cell[772, 32, 93, 1, 34, "Subsection"],
+Cell[868, 35, 110, 1, 26, "Text"],
+Cell[981, 38, 330, 5, 26, "Text"],
+Cell[1314, 45, 383, 9, 41, "Text"],
+Cell[1700, 56, 342, 6, 37, "Program"],
+Cell[2045, 64, 156, 2, 26, "Text"],
+Cell[2204, 68, 236, 4, 37, "Program"],
+Cell[2443, 74, 244, 7, 26, "Text"],
+Cell[2690, 83, 142, 2, 37, "Program"],
+Cell[2835, 87, 89, 1, 26, "Text"],
+Cell[2927, 90, 247, 7, 63, "Program"],
+Cell[3177, 99, 277, 6, 41, "Text"],
+Cell[3457, 107, 175, 4, 26, "Text"],
+Cell[3635, 113, 99, 1, 37, "Program"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3771, 119, 108, 1, 35, "Subsection"],
+Cell[3882, 122, 119, 2, 27, "Input"],
+Cell[CellGroupData[{
+Cell[4026, 128, 221, 5, 27, "Input"],
+Cell[4250, 135, 212, 4, 27, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4499, 144, 286, 5, 27, "Input"],
+Cell[4788, 151, 316, 7, 27, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5141, 163, 267, 4, 27, "Input"],
+Cell[5411, 169, 72, 1, 27, "Output"]
+}, Open  ]],
+Cell[5498, 173, 458, 8, 56, "Text"],
+Cell[CellGroupData[{
+Cell[5981, 185, 1099, 23, 73, "Input"],
+Cell[7083, 210, 273, 6, 40, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7405, 222, 154, 3, 35, "Subsection"],
+Cell[7562, 227, 164, 3, 27, "Input"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
